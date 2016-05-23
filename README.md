@@ -12,10 +12,48 @@ Symfony BundleDependency Component
 
 Installation
 ------------
-* Require the bundle with composer:
+Pretty simple with Composer, run:
 
 ``` bash
 composer require symfony-bundles/bundle-dependency
+```
+
+How to use
+----------
+* Add to your composer.json the bundle dependencies
+* Update your composer dependencies with command `composer update`
+* Modify your Bundle Class. For example:
+
+``` php
+use Symfony\Component\HttpKernel\Bundle\Bundle;
+use SymfonyBundles\BundleDependency\BundleDependency;
+use SymfonyBundles\BundleDependency\BundleDependencyInterface;
+
+class MyBundle extends Bundle implements BundleDependencyInterface
+{
+
+    use BundleDependency;
+
+    public function getBundleDependencies()
+    {
+        return [
+            'FOS\RestBundle\FOSRestBundle',
+            'Snc\RedisBundle\SncRedisBundle',
+        ];
+    }
+
+}
+```
+
+If you want override a method `build`, call the method `registerBundleDependencies`. For example:
+
+``` php
+public function build(ContainerBuilder $container)
+{
+    // ...
+
+    $this->registerBundleDependencies($container);
+}
 ```
 
 [package-link]: https://packagist.org/packages/symfony-bundles/bundle-dependency
