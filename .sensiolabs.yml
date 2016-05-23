@@ -1,0 +1,7 @@
+ignore_branches:
+    - gh-pages
+
+global_exclude_dirs:
+    - logs
+    - vendor
+    - Tests
