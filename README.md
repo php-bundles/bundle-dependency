@@ -50,9 +50,9 @@ If you want override a method `build`, call the method `registerBundleDependenci
 ``` php
 public function build(ContainerBuilder $container)
 {
-    // ...
-
     $this->registerBundleDependencies($container);
+
+    // ...
 }
 ```
 
