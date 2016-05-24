@@ -85,14 +85,11 @@ trait BundleDependency
      */
     protected function initializeBundles(ContainerBuilder $container)
     {
-        $extensions = [];
-
         foreach ($this->instances as $bundle) {
             if ($extension = $bundle->getContainerExtension()) {
                 $container->registerExtension($extension);
-                $extension->load([], $container);
 
-                $extensions[] = $extension->getAlias();
+                $extension->load([], $container);
             }
 
             $bundle->build($container);
