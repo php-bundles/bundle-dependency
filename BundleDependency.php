@@ -3,7 +3,6 @@
 namespace SymfonyBundles\BundleDependency;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
-use Symfony\Component\HttpKernel\DependencyInjection\MergeExtensionConfigurationPass;
 
 trait BundleDependency
 {
@@ -86,18 +85,15 @@ trait BundleDependency
      */
     protected function initializeBundles(ContainerBuilder $container)
     {
-        $extensions = [];
-
         foreach ($this->instances as $bundle) {
             if ($extension = $bundle->getContainerExtension()) {
-                $container->registerExtension($bundle->getContainerExtension());
-                $extensions[] = $extension->getAlias();
+                $container->registerExtension($extension);
+
+                $extension->load([], $container);
             }
 
             $bundle->build($container);
         }
-
-        $container->getCompilerPassConfig()->setMergePass(new MergeExtensionConfigurationPass($extensions));
 
         foreach ($this->instances as $bundle) {
             $bundle->setContainer($container);
