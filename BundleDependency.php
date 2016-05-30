@@ -3,6 +3,7 @@
 namespace SymfonyBundles\BundleDependency;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
+use SymfonyBundles\BundleDependency\DependencyInjection\Compiler;
 
 trait BundleDependency
 {
@@ -45,11 +46,15 @@ trait BundleDependency
 
         $this->bundles = $container->getParameter('kernel.bundles');
 
-        $this->createBundles($this->getBundleDependencies());
+        if ($this->createBundles($this->getBundleDependencies())) {
+            $container->setParameter('kernel.bundles', $this->bundles);
 
-        $container->setParameter('kernel.bundles', $this->bundles);
+            $this->initializeBundles($container);
 
-        $this->initializeBundles($container);
+            $pass = new Compiler\ExtensionLoadPass($this->instances);
+
+            $container->addCompilerPass($pass);
+        }
 
         $this->booted = true;
     }
@@ -59,7 +64,7 @@ trait BundleDependency
      *
      * @param array $dependencies
      *
-     * @return void
+     * @return bool Has new instances or not.
      */
     protected function createBundles(array $dependencies)
     {
@@ -76,6 +81,8 @@ trait BundleDependency
                 }
             }
         }
+
+        return count($this->instances) > 0;
     }
 
     /**
@@ -88,8 +95,6 @@ trait BundleDependency
         foreach ($this->instances as $bundle) {
             if ($extension = $bundle->getContainerExtension()) {
                 $container->registerExtension($extension);
-
-                $extension->load([], $container);
             }
 
             $bundle->build($container);
