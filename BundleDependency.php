@@ -44,9 +44,7 @@ trait BundleDependency
             return;
         }
 
-        if ($container->hasParameter('kernel.bundles')) {
-            $this->bundles = $container->getParameter('kernel.bundles');
-        }
+        $this->bundles = $container->getParameter('kernel.bundles');
 
         if ($this->createBundles($this->getBundleDependencies())) {
             $container->setParameter('kernel.bundles', $this->bundles);
