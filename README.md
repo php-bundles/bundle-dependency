@@ -37,6 +37,7 @@ class MyBundle extends Bundle implements BundleDependencyInterface
     public function getBundleDependencies()
     {
         return [
+            'FOS\RestBundle\FOSRestBundle',
             'SymfonyBundles\ForkBundle\SymfonyBundlesForkBundle',
             'SymfonyBundles\RedisBundle\SymfonyBundlesRedisBundle',
         ];
