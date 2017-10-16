@@ -31,7 +31,6 @@ use SymfonyBundles\BundleDependency\BundleDependencyInterface;
 
 class MyBundle extends Bundle implements BundleDependencyInterface
 {
-
     use BundleDependency;
 
     public function getBundleDependencies()
@@ -42,7 +41,6 @@ class MyBundle extends Bundle implements BundleDependencyInterface
             'SymfonyBundles\RedisBundle\SymfonyBundlesRedisBundle',
         ];
     }
-
 }
 ```
 
@@ -52,7 +50,6 @@ If you want override a method `build`, call the method `registerBundleDependenci
 public function build(ContainerBuilder $container)
 {
     parent::build($container);
-
     // ...
 
     $this->registerBundleDependencies($container);

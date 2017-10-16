@@ -8,7 +8,6 @@ use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 
 class ExtensionLoadPass implements CompilerPassInterface
 {
-
     /**
      * @var array
      */
@@ -37,8 +36,6 @@ class ExtensionLoadPass implements CompilerPassInterface
     /**
      * @param Extension        $extension
      * @param ContainerBuilder $container
-     *
-     * @return void
      */
     private function loadExtension(Extension $extension, ContainerBuilder $container)
     {
@@ -46,5 +43,4 @@ class ExtensionLoadPass implements CompilerPassInterface
             $extension->load([], $container);
         }
     }
-
 }

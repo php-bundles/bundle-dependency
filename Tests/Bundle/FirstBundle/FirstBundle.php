@@ -8,7 +8,6 @@ use SymfonyBundles\BundleDependency\BundleDependencyInterface;
 
 class FirstBundle extends Bundle implements BundleDependencyInterface
 {
-
     use BundleDependency;
 
     public function getBundleDependencies()
@@ -18,5 +17,4 @@ class FirstBundle extends Bundle implements BundleDependencyInterface
             \SymfonyBundles\BundleDependency\Tests\Bundle\ThirdBundle\ThirdBundle::class,
         ];
     }
-
 }
