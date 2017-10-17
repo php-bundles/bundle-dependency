@@ -6,7 +6,6 @@ use SymfonyBundles\BundleDependency\BundleDependency;
 
 class TraitTest extends TestCase
 {
-
     use BundleDependency;
 
     public function testGetBundleDependencies()
@@ -20,5 +19,4 @@ class TraitTest extends TestCase
             Bundle\FirstBundle\FirstBundle::class,
         ];
     }
-
 }

@@ -4,12 +4,11 @@ namespace SymfonyBundles\BundleDependency\Tests\Bundle\ThirdBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 use SymfonyBundles\BundleDependency\BundleDependency;
-use SymfonyBundles\BundleDependency\BundleDependencyInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
+use SymfonyBundles\BundleDependency\BundleDependencyInterface;
 
 class ThirdBundle extends Bundle implements BundleDependencyInterface
 {
-
     use BundleDependency;
 
     public function build(ContainerBuilder $container)
@@ -29,5 +28,4 @@ class ThirdBundle extends Bundle implements BundleDependencyInterface
             \SymfonyBundles\BundleDependency\Tests\Bundle\FourthBundle\FourthBundle::class,
         ];
     }
-
 }

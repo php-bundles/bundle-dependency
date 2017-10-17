@@ -4,7 +4,6 @@ namespace SymfonyBundles\BundleDependency\Tests;
 
 class BundleTest extends TestCase
 {
-
     public function testBundleExists()
     {
         $bundles = $this->container->getParameter('kernel.bundles');
@@ -14,5 +13,4 @@ class BundleTest extends TestCase
         $this->assertArrayHasKey('ThirdBundle', $bundles);
         $this->assertArrayHasKey('FourthBundle', $bundles);
     }
-
 }

@@ -4,7 +4,6 @@ namespace SymfonyBundles\BundleDependency;
 
 interface BundleDependencyInterface
 {
-
     /**
      * Gets the list of bundle dependencies.
      *

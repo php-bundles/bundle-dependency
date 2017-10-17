@@ -7,7 +7,6 @@ use SymfonyBundles\BundleDependency\DependencyInjection\Compiler;
 
 trait BundleDependency
 {
-
     /**
      * @var bool
      */
@@ -35,8 +34,6 @@ trait BundleDependency
      * Register the bundle dependencies.
      *
      * @param ContainerBuilder $container
-     *
-     * @return void
      */
     protected function registerBundleDependencies(ContainerBuilder $container)
     {
@@ -87,8 +84,6 @@ trait BundleDependency
 
     /**
      * @param ContainerBuilder $container
-     *
-     * @return void
      */
     protected function initializeBundles(ContainerBuilder $container)
     {
