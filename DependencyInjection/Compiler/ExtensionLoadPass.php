@@ -3,7 +3,7 @@
 namespace SymfonyBundles\BundleDependency\DependencyInjection\Compiler;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
-use Symfony\Component\HttpKernel\DependencyInjection\Extension;
+use Symfony\Component\DependencyInjection\Extension\Extension;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 
 class ExtensionLoadPass implements CompilerPassInterface
